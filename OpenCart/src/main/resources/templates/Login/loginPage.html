@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #33EEFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        .container {
+            padding: 16px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+
+        .loginbtn {
+            background-color: #28ace0;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+            border-radius: 10px;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+
+
+        a {
+            color: white
+        }
+
+
+        .container_signin {
+            margin-top: 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .container_signin p a {
+            color: #33EEFF;
+        }
+
+
+        .logoimg {
+            /*size: 20;*/
+            width: 30%;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    </style>
+    <title>Welcome to Opencart</title>
+</head>
+
+<body>
+<!--<a th:href="@{'/customer/' + ${customer.customerId}}">access</a>-->
+<form method="post" th:action="@{/validate}" th:object="${customer}">
+    <div class="container">
+        <div class="menu">
+            <img alt="" class="logoimg" src="opencart-logo.png">
+        </div>
+        <h1>Sign in</h1>
+        <hr>
+
+        <div class="full_name">
+            <div class="name">
+                <label for="ID"><b></b></label>
+                <input id="ID" name="psw" placeholder="" required th:field="*{customerId}" type="hidden">
+            </div>
+            <div class="name">
+                <label for="fname"><b></b></label>
+                <input id="fname" name="psw" placeholder="Enter First name" required th:field="*{firstName}"
+                       type="hidden">
+            </div>
+
+            <div class="name">
+                <label for="lname"><b></b></label>
+                <input id="lname" name="psw" placeholder="Enter Last name" required th:field="*{lastName}"
+                       type="hidden">
+            </div>
+        </div>
+
+        <label for="email"><b></b></label>
+        <input id="email" name="email" placeholder="Enter Email" required th:field="*{email}" type="hidden">
+
+        <label for="phone"><b></b></label>
+        <input id="phone" name="phone" placeholder="Enter Phone" required th:field="*{phoneNumber}" type="hidden">
+
+        <label for="account"><b>Account</b></label>
+        <input id="account" name="account" placeholder="Enter Account Name" required th:field="*{accountName}"
+               type="text">
+
+        <label for="password"><b>Password</b></label>
+        <input id="password" name="password" placeholder="Repeat Password" required th:field="*{password}" type="text">
+
+        <label for="add1"><b></b></label>
+        <input id="add1" name="add1" placeholder="Enter Address1" required th:field="*{addressLine1}" type="hidden">
+
+        <label for="add2"><b></b></label>
+        <input id="add2" name="add2" placeholder="Enter Address2" required th:field="*{addressLine2}" type="hidden">
+
+        <label for="city"><b></b></label>
+        <input id="city" name="city" placeholder="Enter City" required th:field="*{city}" type="hidden">
+
+        <label for="country"><b></b></label>
+        <input id="country" name="country" placeholder="Enter Country" required th:field="*{country}" type="hidden">
+
+        <hr>
+        <button class="loginbtn" type="submit">Sign in</button>
+    </div>
+
+    <div class="container_signin">
+        <p>Not have an account? <a th:href="@{/registerPage}">Sign up</a>.</p>
+    </div>
+</form>
+
+</body>
+</html>

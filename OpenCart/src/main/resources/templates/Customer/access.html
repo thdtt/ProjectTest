@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Access</title>
+</head>
+<body>
+<div align="center" th:object="${customer}">
+    <h1>Access User Info</h1>
+    <br/>
+    <!--    @{/mycontroller/} + ${type}-->
+    <form method="post" th:action="@{/customer/{id}/info(id=${customer.customerId})}">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td><input th:field="*{customerId}" type="hidden"></td>
+                <td><input th:field="*{firstName}" type="hidden"></td>
+                <td><input th:field="*{lastName}" type="hidden"></td>
+                <td><input th:field="*{email}" type="hidden"></td>
+                <td><input th:field="*{phoneNumber}" type="hidden"></td>
+                <td><input th:field="*{addressLine1}" type="hidden"></td>
+                <td><input th:field="*{addressLine2}" type="hidden"></td>
+                <td><input th:field="*{city}" type="hidden"></td>
+                <td><input th:field="*{country}" type="hidden"></td>
+            </tr>
+            <tr>
+                <td>Account Name</td>
+                <td><input th:field="*{accountName}" type="text"></td>
+            </tr>
+            <tr>
+                <td>PassWord</td>
+                <td><input th:field="*{password}" type="password"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+</body>
+</html>

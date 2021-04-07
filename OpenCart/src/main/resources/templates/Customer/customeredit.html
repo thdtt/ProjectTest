@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #33EEFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            padding: 16px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .full_name {
+            display: flex;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .name {
+            width: 50%;
+            padding-right: 15px;
+        }
+
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+
+        .registerbtn {
+            background-color: cornflowerblue;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+            border-radius: 10px;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+
+
+        a {
+            color: dodgerblue;
+        }
+
+
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .logoimg {
+            /*size: 100%;*/
+            width: 30%;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    </style>
+    <title>Welcome to Opencart</title>
+</head>
+
+<body>
+
+<form method="post" th:action="@{/{ID}/customer/info/edit/save (ID=${customer.customerId})}" th:object="${customer}">
+    <div class="container">
+        <div class="menu">
+            <img alt="" class="logoimg" src="https://www.opencart.com/application/view/image/icon/opencart-logo.png">
+        </div>
+        <h1>Edit User Info</h1>
+        <p>Please fill in this form to edit user's information</p>
+        <hr>
+
+        <div class="full_name">
+
+            <input id="id" name="id" th:field="*{customerId}" th:placeholder="*{customerId}" type="hidden">
+
+            <div class="name">
+                <label for="fname"><b>First name</b></label>
+                <input id="fname" name="psw" th:field="*{firstName}" th:placeholder="*{firstName}" type="text">
+            </div>
+
+            <div class="name">
+                <label for="lname"><b>Last name</b></label>
+                <input id="lname" name="psw" th:field="*{lastName}" th:placeholder="*{lastName}" type="text">
+            </div>
+        </div>
+
+        <label for="email"><b>Email</b></label>
+        <input id="email" name="email" th:field="*{email}" th:placeholder="*{email}" type="text">
+
+        <label for="phone"><b>Phone</b></label>
+        <input id="phone" name="phone" th:field="*{phoneNumber}" th:placeholder="*{phoneNumber}" type="text">
+
+        <label for="account"><b></b></label>
+        <input id="account" name="account" th:field="*{accountName}" th:placeholder="*{accountName}" type="hidden">
+
+        <label for="password"><b>Password</b></label>
+        <input id="password" name="password" th:field="*{password}" th:placeholder="*{password}" type="password">
+
+        <label for="add1"><b>Address 1</b></label>
+        <input id="add1" name="add1" th:field="*{addressLine1}" th:placeholder="*{addressLine1}" type="text">
+
+        <label for="add2"><b>Address 2</b></label>
+        <input id="add2" name="add2" th:field="*{addressLine2}" th:placeholder="*{addressLine2}" type="text">
+
+        <label for="city"><b>City</b></label>
+        <input id="city" name="city" th:field="*{city}" th:placeholder="*{city}" type="text">
+
+        <label for="country"><b>Country</b></label>
+        <input id="country" name="country" th:field="*{country}" th:placeholder="*{country}" type="text">
+
+
+        <button class="registerbtn" type="submit">Save Information</button>
+    </div>
+
+    <div class="container signin">
+        <p>Minh bam nham, cho minh bam lai nha :3 <a th:href="@{/{ID}/customer/info/ (ID=${customer.customerId})}">Minh
+            di day</a>.</p>
+    </div>
+</form>
+
+</body>
+</html>
